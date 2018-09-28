@@ -20,9 +20,29 @@ public class Vaga {
     private int id;
     private String descricao;
     private String cidade;
-    private String uf;
     private String empresa;
 
+    public Vaga() {
+    }
+
+    
+    /***
+     * Cria uma vaga pelos paramentros repassados
+     * @param descricao - Descrição da vaga 
+     * @param cidade - Nome da cidade 
+     * @param empresa - Dados da empresa
+     */
+    
+    public Vaga(String descricao, String cidade,  String empresa, int id) {
+        this.descricao = descricao;
+        this.cidade = cidade;
+        this.empresa = empresa;
+        this.id = id;
+    }
+
+    
+
+    
     public int getId() {
         return id;
     }
@@ -47,13 +67,6 @@ public class Vaga {
         this.cidade = cidade;
     }
 
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
 
     public String getEmpresa() {
         return empresa;
@@ -62,6 +75,12 @@ public class Vaga {
     public void setEmpresa(String empresa) {
         this.empresa = empresa;
     }
+
+    @Override
+    public String toString() {
+        return "Vaga{" + "id=" + id + ", descricao=" + descricao + ", cidade=" + cidade + ", empresa=" + empresa + '}';
+    }
+    
     
     
 }

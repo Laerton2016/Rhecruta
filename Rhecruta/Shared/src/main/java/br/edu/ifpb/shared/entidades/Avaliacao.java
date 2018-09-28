@@ -5,6 +5,7 @@
  */
 package br.edu.ifpb.shared.entidades;
 
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +28,9 @@ public class Avaliacao {
     private Funcionario avaliador;
     private int nota;
     private boolean aprovado;
-
+    private LocalDate data;
+    private LocalDate hora;
+    
     public int getId() {
         return id;
     }
@@ -74,6 +77,22 @@ public class Avaliacao {
 
     public void setAprovado(boolean aprovado) {
         this.aprovado = aprovado;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public LocalDate getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalDate hora) {
+        this.hora = hora;
     }
     
     
