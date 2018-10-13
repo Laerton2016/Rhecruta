@@ -9,6 +9,7 @@ package br.edu.ifpb.core.services;
 
 
 import br.edu.ifpb.shared.entidades.Vaga;
+import br.edu.ifpb.shared.persistencia.DAOVaga;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,12 +21,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.core.Response;
-import javax.xml.bind.JAXBContext;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -34,12 +32,16 @@ import org.json.JSONObject;
  *
  * @author laerton
  */
+@Stateless
 public class VagaService {
  
     private final String endereco = "http://www.pyjobs.com.br/api/jobs/";
     private static int HTTP_COD_SUCESSO = 200;
     private List<Vaga> vagasWeb = new LinkedList<Vaga>();
-
+    
+    @Inject
+    private DAOVaga daoVaga;
+    
     public VagaService() 
     {
         try {
@@ -114,6 +116,70 @@ public class VagaService {
         }
         return retorno;
     }
+    
+    /***
+     * Lista todas as vagas no banco
+     * @return - Lista de vagas no banco
+     */
+    public List<Vaga> findAllVagasBanco(){
+        return daoVaga.findAll();
+    }
+    /***
+     * Busca por uma Vaga pelo ID repassado
+     * @param idVaga = Id da vaga 
+     * @return  Vaga localizada ou Null
+     */
+    public Vaga findVagaBancoById(int idVaga){
+        return daoVaga.findById(idVaga);
+    }
+    /***
+     * Salva os dados de uma vaga no banco.
+     * @param vaga - Vaga cujos dados serão salvos
+     */
+    public void saveVagaBanco(Vaga vaga){
+        if (vaga.getId() == 0){
+            daoVaga.save(vaga);
+        }else{
+            daoVaga.update(vaga);
+        }
+    }
+    /***
+     * Remove uma vaga do banco pelo ID repassado
+     * @param idVaga = Id da vaga.
+     */
+    public void removeVagaDoBanco(int idVaga){
+        daoVaga.remove(idVaga);
+    }
+    
+    /***
+     * Lista vagas de uma determinada cidade
+     * @param ciadde - Cidade a ser filtrada
+     * @return - Lista de vagas de uma determinada cidade
+     */
+    public List<Vaga> findVagaBancoByCidade(String ciadde){
+        return daoVaga.findByCidade(ciadde);
+    }
+    
+    /***
+     * Lista de vagas de uma determinada empresa
+     * @param empresa - Empresa a ser filtrada
+     * @return - Lista de vagas filtradas
+     */
+    public List<Vaga> findVagasBancoByEmpresa(String empresa){
+        return daoVaga.findByEmpresa(empresa);
+    }
+    
+    /***
+     * Lista de vagas baseado em um termo repassado como referencia de descrição 
+     * @param termo - Termo a ser refereciado
+     * @return - Lista de vagas
+     */
+    public List<Vaga> findVagaBancoByReferencia(String termo){
+        return daoVaga.findByReferencia(termo);
+    }
+    
+    
+    
     
     
  }

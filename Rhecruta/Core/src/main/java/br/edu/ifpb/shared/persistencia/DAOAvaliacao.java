@@ -8,65 +8,47 @@ package br.edu.ifpb.shared.persistencia;
 import br.edu.ifpb.shared.entidades.Avaliacao;
 import br.edu.ifpb.shared.interfaces.IDAO;
 import java.util.List;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
  *
  * @author laerton
  */
-public class DAOAvaliacao implements IDAO<Avaliacao>{
-
+@Singleton
+public class DAOAvaliacao {
+    
+    @PersistenceContext
     private EntityManager em;
 
-    public DAOAvaliacao(EntityManager em) {
-        this.em = em;
+    public DAOAvaliacao() {
     }
-    
-    
-    @Override
+
     public void save(Avaliacao obj) {
-        try {
-            em.getTransaction().begin();
             em.persist(obj);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-        }
     }
 
-    @Override
+    
     public void update(Avaliacao obj) {
-        try {
             obj = em.merge(obj);
-            em.getTransaction().begin();
-            em.persist(obj);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-        }
     }
 
-    @Override
+    
     public Avaliacao findById(long id) {
        return em.find(Avaliacao.class, id);
     }
 
-    @Override
+    
     public List<Avaliacao> findAll() {
         return em.createQuery("Select a from Avaliacao a order by a.id", Avaliacao.class).getResultList();
     }
 
-    @Override
+    
     public void remove(long id) {
-        try {
             Avaliacao a = findById(id);
-            em.getTransaction().begin();
             em.remove(a);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-        }
     }
     
     /***
@@ -87,13 +69,8 @@ public class DAOAvaliacao implements IDAO<Avaliacao>{
      * @return Lista de avaliaçãoes
      */
     public List<Avaliacao> findAvaliacaoByAvaliador(int idAvaliador){
-        Query q = em.createQuery("Select a from Avaliacao a, Funcionario f Where f MEMBER OF a.avaliador and f.id =: id ", Avaliacao.class);
+        Query q = em.createQuery("Select a from Avaliacao a, Funcionario f Where f MEMBER OF a.avaliador and f.id =: id  ", Avaliacao.class);
         q.setParameter("id", idAvaliador);
         return q.getResultList();
     }
-    
-    
-    
-    
-    
 }

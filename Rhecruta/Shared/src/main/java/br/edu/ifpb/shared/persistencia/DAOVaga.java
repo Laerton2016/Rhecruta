@@ -14,7 +14,7 @@ import javax.persistence.EntityManager;
  *
  * @author laerton
  */
-public class DAOVaga implements IDAO<Vaga>{
+public class DAOVaga {
 
     private EntityManager em ;
 
@@ -22,7 +22,7 @@ public class DAOVaga implements IDAO<Vaga>{
         this.em = em;
     }
     
-    @Override
+    
     public void save(Vaga obj) {
         try {
             em.getTransaction().begin();
@@ -33,7 +33,7 @@ public class DAOVaga implements IDAO<Vaga>{
         }
     }
 
-    @Override
+    
     public void update(Vaga obj) {
         try {
             obj = em.merge(obj);
@@ -46,17 +46,17 @@ public class DAOVaga implements IDAO<Vaga>{
         }
     }
 
-    @Override
+    
     public Vaga findById(long id) {
         return em.find(Vaga.class, id);
     }
 
-    @Override
+    
     public List<Vaga> findAll() {
         return em.createQuery("Select * from Vaga order by id", Vaga.class).getResultList();
     }
 
-    @Override
+    
     public void remove(long id) {
         try {
             Vaga v = findById(id);

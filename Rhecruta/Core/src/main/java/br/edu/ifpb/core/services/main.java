@@ -6,13 +6,7 @@
 package br.edu.ifpb.core.services;
 
 import br.edu.ifpb.shared.entidades.Vaga;
-import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.xml.bind.JAXBException;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 /**
  *
