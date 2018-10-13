@@ -83,7 +83,7 @@ public class VagaService {
         }
     }
 
-    public List<Vaga> getVagasWeb() {
+    public List<Vaga> findVagasWeb() {
         return vagasWeb;
     }
     
@@ -116,6 +116,7 @@ public class VagaService {
         }
         return retorno;
     }
+    
     
     /***
      * Lista todas as vagas no banco
