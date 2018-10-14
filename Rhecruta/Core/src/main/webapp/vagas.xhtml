@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <h:head>
+        <title>RHecruta - Vagas</title>
+         <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </h:head>
+      <ui:composition template="template.xhtml">
+        <ui:define name="centro">
+    <h:body>
+        <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <h:form>
+            
+                <div>
+                    <div>
+                        <a>Busque e selecione as vagas de seu interesse</a><br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined ">
+                            <input class="mdl-textfield__input" style="width:400px;" type="text"  jsf:id="termo" jsf:value="#{vagaControler.termo}" />
+                            <label class="mdl-textfield__label" style="width:400px;" for="termo">Digite o termo de busca</label>
+                        </div>
+                       
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined ">
+                            <h:selectOneMenu id="selectTipo" class="mdl-textfield__input" style="width:200px; margin-left: 100px" value="#{vagaControler.tipo}">
+                                            <f:selectItem class="mdl-textfield__input" itemValue="Cidade" itemLabel="Cidade"/>
+                                            <f:selectItem class="mdl-textfield__input" itemValue="Descrição" itemLabel="Descrição"/>
+                                            <f:selectItem class="mdl-textfield__input" itemValue="Empresa" itemLabel="Empresa"/>
+                            </h:selectOneMenu>
+                            <label class="mdl-textfield__label" style="width:200px;  margin-left: 100px" for="tipo">Selecione tipo</label>
+                        </div>
+                        <button class="mdl-button--icon material-icons" jsf:action="#{vagaControler.findVagasWebTermo()}">search</button>   
+                        <div>
+                           
+                        </div>    
+                    </div>
+                    <a>Vagas na Web</a>
+                    <h:dataTable value="#{vagaControler.vagasWeb}" var="vaga">
+                        <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--5-col">
+                            <h:column><a style="font-style: initial">ID: </a><br/>#{vaga.id}</h:column>
+                            <h:column><a style="font-style: initial">Empresa: </a><br/>#{vaga.empresa}</h:column>
+                            <h:column><a style="font-style: initial">Cidade: </a><br/>#{vaga.cidade}</h:column>
+                        
+                        </div>
+                        <div class="mdl-cell mdl-cell--5-col">
+                            <h:column><a style="font-style: initial">Descrição: </a><p>#{vaga.descricao}</p></h:column>
+                        </div>
+                        
+                        </div>
+                    </h:dataTable>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+       </ui:define>
+      </ui:composition>
+</html>

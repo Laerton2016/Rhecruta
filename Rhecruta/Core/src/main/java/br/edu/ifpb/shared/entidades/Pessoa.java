@@ -25,6 +25,11 @@ public class Pessoa implements Serializable{
     @Embedded
     private Endereco endereco;
 
+    public Pessoa() {
+        endereco = new Endereco();
+    }
+
+    
     public int getId() {
         return id;
     }

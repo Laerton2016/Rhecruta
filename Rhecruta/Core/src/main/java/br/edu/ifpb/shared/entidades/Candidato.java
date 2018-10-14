@@ -5,20 +5,20 @@
  */
 package br.edu.ifpb.shared.entidades;
 
-import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 /**
  *
- * @author laerton
+ * @author laerton  
  */
 @Entity
 public class Candidato extends Pessoa{
-    private File Curriculo;
+    private String Curriculo;
     @OneToMany
-    private List<Vaga> vagas;
+    private List<Vaga> vagas = new LinkedList<>();
     private boolean classificado;
 
     public List<Vaga> getVagas() {
@@ -37,14 +37,21 @@ public class Candidato extends Pessoa{
         this.classificado = classificado;
     }
 
-    public File getCurriculo() {
+    public String getCurriculo() {
         return Curriculo;
     }
 
-    public void setCurriculo(File Curriculo) {
+    public void setCurriculo(String Curriculo) {
         this.Curriculo = Curriculo;
     }
     
+    public void addVaga(Vaga vaga){
+        vagas.add(vaga);
+    }
+    
+    public void remVaga(Vaga vaga){
+        vagas.remove(vaga);
+    }
     
     
 }

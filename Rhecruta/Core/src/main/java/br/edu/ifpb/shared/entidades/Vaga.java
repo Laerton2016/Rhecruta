@@ -18,10 +18,10 @@ import javax.persistence.Id;
 public class Vaga {
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String descricao;
+    
     private String cidade;
     private String empresa;
-
+    private String UF;
     public Vaga() {
     }
 
@@ -33,11 +33,19 @@ public class Vaga {
      * @param empresa - Dados da empresa
      */
     
-    public Vaga(String descricao, String cidade,  String empresa, int id) {
-        this.descricao = descricao;
+    public Vaga( String cidade,  String empresa, int id) {
+        
         this.cidade = cidade;
         this.empresa = empresa;
         this.id = id;
+    }
+
+    public String getUF() {
+        return UF;
+    }
+
+    public void setUF(String UF) {
+        this.UF = UF;
     }
 
     
@@ -51,13 +59,7 @@ public class Vaga {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+    
 
     public String getCidade() {
         return cidade;
@@ -76,10 +78,6 @@ public class Vaga {
         this.empresa = empresa;
     }
 
-    @Override
-    public String toString() {
-        return "Vaga{" + "id=" + id + ", descricao=" + descricao + ", cidade=" + cidade + ", empresa=" + empresa + '}';
-    }
     
     
     

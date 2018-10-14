@@ -10,5 +10,5 @@ package br.edu.ifpb.shared.entidades;
  * @author laerton
  */
 public enum TipoFuncionario {
-    GERENTE, AVALIADOR
+    GERENTE  , AVALIADOR;
 }

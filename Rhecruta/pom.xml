@@ -6,8 +6,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>Shared</module>
-    <module>Core</module>
         <module>POS-Rest</module>
     </modules>
     <properties>

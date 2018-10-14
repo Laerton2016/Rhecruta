@@ -7,7 +7,9 @@ package br.edu.ifpb.core.controle;
 
 import br.edu.ifpb.core.services.VagaService;
 import br.edu.ifpb.shared.entidades.Vaga;
+import br.edu.ifpb.shared.entidades.VagaFull;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -24,13 +26,42 @@ public class VagaControler implements Serializable{
     private VagaService service;
     private Vaga vaga = new Vaga();
     private Vaga vagaApi = new Vaga();
+    private List<VagaFull> vagasWeb = new LinkedList<>();
+    private String tipo = "";
+    private String termo = "";
+
+    public String getTermo() {
+        return termo;
+    }
+
+    public void setTermo(String termo) {
+        this.termo = termo;
+    }
+
+    
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
     
     public Vaga getVaga() {
         return vaga;
     }
-
+    
     public void setVaga(Vaga vaga) {
         this.vaga = vaga;
+    }
+
+    public List<VagaFull> getVagasWeb() {
+        return vagasWeb;
+    }
+
+    public void setVagasWeb(List<VagaFull> vagasWeb) {
+        this.vagasWeb = vagasWeb;
     }
     
     public String save(){
@@ -38,10 +69,14 @@ public class VagaControler implements Serializable{
         vaga = new Vaga();
         return null;
     }
+    public String editar(Vaga vaga){
+        this.vaga = vaga;
+        return null;
+    }
     
-    public String remove (){
+    public String remove (Vaga vaga){
         service.removeVagaDoBanco(vaga.getId());
-        vaga = new Vaga();
+        this.vaga = new Vaga();
         return null;
     }
     
@@ -49,8 +84,28 @@ public class VagaControler implements Serializable{
         return service.findAllVagasBanco();
     }
     
-    public List<Vaga> findVagasWeb(){
-        return service.findVagasWeb();
+    public String findVagasWeb(){
+        vagasWeb = service.findVagasWeb();
+        return null;
+    }
+    
+    public String limpar(){
+        vagasWeb = new LinkedList<>();
+        return null;
+    }
+    
+    public String findVagasWebTermo(){
+        if (termo.trim().equals("")||tipo.trim().equals("")){
+            findVagasWeb();
+        }else if (tipo.equals("Cidade")){
+            vagasWeb = service.findByCidade(termo);
+        }else if (tipo.equals("Empresa")){
+            vagasWeb = service.findByEmpresa(termo);
+        }else{
+            vagasWeb = service.findByDescricao(termo);
+        }
+        termo = "";
+        return null;
     }
     
     public String findById(int id){
@@ -60,5 +115,6 @@ public class VagaControler implements Serializable{
         }
         return null;
     }
+    
     
 }

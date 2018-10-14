@@ -37,7 +37,7 @@ public class DAOVaga {
     }
 
     
-    public Vaga findById(long id) {
+    public Vaga findById(int id) {
         return em.find(Vaga.class, id);
     }
 
@@ -47,7 +47,7 @@ public class DAOVaga {
     }
 
     
-    public void remove(long id) {
+    public void remove(int id) {
             Vaga v = findById(id);
             em.remove(v);
     }

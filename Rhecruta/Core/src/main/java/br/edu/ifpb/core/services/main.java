@@ -14,11 +14,7 @@ import java.util.List;
  */
 public class main {
     public static void main(String[] args) {
-        VagaService vs = new VagaService();
-        List<Vaga> vagasWeb = vs.findByDescricao("NYC-based");
-        for (Vaga object : vagasWeb) {
-            System.out.println(object.getDescricao()+ " - " + object.getCidade());
-        }
+        
         
                
         

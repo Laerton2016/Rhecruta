@@ -6,7 +6,6 @@
 package br.edu.ifpb.shared.persistencia;
 
 import br.edu.ifpb.shared.entidades.Avaliacao;
-import br.edu.ifpb.shared.interfaces.IDAO;
 import java.util.List;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;

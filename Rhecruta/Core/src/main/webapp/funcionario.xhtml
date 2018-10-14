@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <h:head>
+        <title>RHecruta - Cadastro Candidato</title>
+    </h:head>
+      <ui:composition template="template.xhtml">
+        <ui:define name="centro">
+            
+    <h:body>
+        <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <h:form>
+                <div >
+                    <div>
+                        <a>Formulário de cadastro de Funcionario</a>
+                    </div>
+                    <br/>
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined">
+                          <input class="mdl-textfield__input" style="width:700px" type="text"  jsf:id="Nome" jsf:value="#{funcionarioControler.funcionario.nome}"/>
+                          <label class="mdl-textfield__label" style="width:700px" for="Nome">Nome</label>
+                      </div>
+                    <br/>
+                    <a>Endereço</a><br/>
+                    <div>
+                        <div >
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined">
+                          <input class="mdl-textfield__input" style="width:500px;"   type="text"  jsf:id="Rua" jsf:value="#{funcionarioControler.funcionario.endereco.rua}"/>
+                          <label class="mdl-textfield__label" style="width:500px;" for="Rua">Rua</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined ">
+                            <input class="mdl-textfield__input" style="width:100px; margin-left: auto" type="text"  jsf:id="Numero" jsf:value="#{funcionarioControler.funcionario.endereco.numero}"/>
+                          <label class="mdl-textfield__label" style="width:100px; margin-left: auto"  for="Numero">Número</label>
+                        </div>
+                        </div>
+                        <div style="width: 1000px">
+                           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined ">
+                            <input class="mdl-textfield__input" style="width:400px" type="text"  jsf:id="Bairro" jsf:value="#{funcionarioControler.funcionario.endereco.bairro}"/>
+                            <label class="mdl-textfield__label" style="width:400px" for="Bairro">Bairro</label>
+                          </div>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined ">
+                            <input class="mdl-textfield__input" style="width:300px; margin-left: 100px" type="text"  jsf:id="Cidade" jsf:value="#{funcionarioControler.funcionario.endereco.cidade}"/>
+                            <label class="mdl-textfield__label" style="width:300px; margin-left: 100px" for="Cidade">Cidade</label>
+                          </div>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined ">
+                            <input class="mdl-textfield__input" style="width:100px; margin-left: 100px" type="text"  jsf:id="UF" jsf:value="#{funcionarioControler.funcionario.endereco.cidade}"/>
+                            <label class="mdl-textfield__label" style="width:100px; margin-left: 100px" for="UF">UF</label>
+                          </div>  
+                        </div>
+                        
+                    </div>
+                    <a>Dados complementares</a>
+                    <br/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined ">
+                            <input class="mdl-textfield__input" style="width:400px; " type="text"  jsf:id="Email" jsf:value="#{funcionarioControler.funcionario.email}"/>
+                            <label class="mdl-textfield__label" style="width:400px; " for="Email">E-mail</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined ">
+                            <h:selectOneMenu id="selectTipo" class="mdl-textfield__input" style="width:200px; margin-left: 100px" value="#{funcionarioControler.tipo}">
+                                            <f:selectItem class="mdl-textfield__input" itemValue="0" itemLabel="GERENTE"/>
+                                            <f:selectItem class="mdl-textfield__input" itemValue="1" itemLabel="AVALIADOR"/>
+                            </h:selectOneMenu>
+                            <label class="mdl-textfield__label" style="width:200px;  margin-left: 100px" for="tipo">Selecione tipo</label>
+                        </div>
+                        
+                    <div>
+                        <div>
+                            <button class="mdl-button--icon material-icons"  jsf:action="#{funcionarioControler.save()}">save</button>
+                            <button class="mdl-button--icon material-icons"  jsf:action="#{funcionarioControler.cancel()}">cancel</button>
+                        </div>
+                    </div>
+                    <br/>
+                        
+                
+             </div>
+            </h:form>
+        </div>
+    </h:body>
+       </ui:define>
+      </ui:composition>
+    
+</html>

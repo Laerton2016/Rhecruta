@@ -9,6 +9,7 @@ package br.edu.ifpb.core.services;
 
 
 import br.edu.ifpb.shared.entidades.Vaga;
+import br.edu.ifpb.shared.entidades.VagaFull;
 import br.edu.ifpb.shared.persistencia.DAOVaga;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class VagaService {
  
     private final String endereco = "http://www.pyjobs.com.br/api/jobs/";
     private static int HTTP_COD_SUCESSO = 200;
-    private List<Vaga> vagasWeb = new LinkedList<Vaga>();
+    private List<VagaFull> vagasWeb = new LinkedList<VagaFull>();
     
     @Inject
     private DAOVaga daoVaga;
@@ -79,17 +80,17 @@ public class VagaService {
             String descricao = job.getString("description");
             String companhia = job.getString("company_name");
             int id = job.getInt("id");
-            vagasWeb.add(new Vaga(descricao, cidade, companhia, id));
+            vagasWeb.add(new VagaFull(descricao, cidade, companhia, id));
         }
     }
 
-    public List<Vaga> findVagasWeb() {
+    public List<VagaFull> findVagasWeb() {
         return vagasWeb;
     }
     
-    public List<Vaga> findByCidade(String cidade){
-        List<Vaga> retorno = new LinkedList<Vaga>();
-        for (Vaga vaga : this.vagasWeb) {
+    public List<VagaFull> findByCidade(String cidade){
+        List<VagaFull> retorno = new LinkedList<VagaFull>();
+        for (VagaFull vaga : this.vagasWeb) {
             if (vaga.getCidade().toUpperCase().contains(cidade.toUpperCase())){
                 retorno.add(vaga);
             }
@@ -97,9 +98,9 @@ public class VagaService {
         return retorno;
     }
     
-    public List<Vaga> findByEmpresa(String empresa){
-        List<Vaga> retorno = new LinkedList<Vaga>();
-        for (Vaga vaga : this.vagasWeb) {
+    public List<VagaFull> findByEmpresa(String empresa){
+        List<VagaFull> retorno = new LinkedList<VagaFull>();
+        for (VagaFull vaga : this.vagasWeb) {
             if (vaga.getEmpresa().toUpperCase().contains(empresa.toUpperCase())){
                 retorno.add(vaga);
             }
@@ -107,9 +108,9 @@ public class VagaService {
         return retorno;
     }
     
-    public List<Vaga> findByDescricao(String descricao){
-        List<Vaga> retorno = new LinkedList<Vaga>();
-        for (Vaga vaga : this.vagasWeb) {
+    public List<VagaFull> findByDescricao(String descricao){
+        List<VagaFull> retorno = new LinkedList<VagaFull>();
+        for (VagaFull vaga : this.vagasWeb) {
             if (vaga.getDescricao().toUpperCase().contains(descricao.toUpperCase())){
                 retorno.add(vaga);
             }

@@ -7,9 +7,10 @@ package br.edu.ifpb.core.controle;
 
 import br.edu.ifpb.core.services.FuncionarioService;
 import br.edu.ifpb.shared.entidades.Funcionario;
+import br.edu.ifpb.shared.entidades.TipoFuncionario;
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.Stateless;
+
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -35,7 +36,6 @@ public class FuncionarioControler implements Serializable{
     
     public String save(){
         service.save(funcionario);
-        funcionario = new Funcionario();
         return null;
     }
     
@@ -49,6 +49,25 @@ public class FuncionarioControler implements Serializable{
         return service.findAll();
     }
     
+    public void setTipo(String tipo){
+        if (tipo.equals(0)){
+            funcionario.setTipo(TipoFuncionario.GERENTE);
+        }else{
+            funcionario.setTipo(TipoFuncionario.AVALIADOR);
+        }
+    }
+    public String getTipo(){
+        if (funcionario.getTipo() == TipoFuncionario.GERENTE){
+            return "0";
+        }else{
+            return "1";
+        }
+    }
+    
+    public String cancel(){
+        funcionario = new Funcionario();
+        return null;
+    }
     public String findById(int id){
         funcionario = service.findById(id);
         if (funcionario == null){
