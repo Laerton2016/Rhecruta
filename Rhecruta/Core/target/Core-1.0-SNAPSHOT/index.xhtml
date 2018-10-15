@@ -3,14 +3,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
     <h:head>
         <title>RHecruta - Home</title>
     </h:head>
       <ui:composition template="template.xhtml">
         <ui:define name="centro">
     <h:body>
-        
+        <h:form>
+            <div style="margin-top: 200px">
+                <a style="margin-left: 100px">entre com os dados para inicializar</a><br/>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined"  style="margin-left: 100px">
+                    <input class="mdl-textfield__input" style="width:700px" type="text"  jsf:id="email" jsf:value="#{sessaoControle.email}" />
+                          <label class="mdl-textfield__label" style="width:700px" for="email">E-mail</label>
+                </div><br/>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdc-text-field--outlined ">
+                    <h:selectOneMenu id="selectTipo" class="mdl-textfield__input" style="width:200px; margin-left: 100px" value="#{sessaoControle.tipo}" >
+                                            <f:selectItem class="mdl-textfield__input" itemValue="0" itemLabel="FUNCIONARIO"/>
+                                            <f:selectItem class="mdl-textfield__input" itemValue="1" itemLabel="CANDIDATO"/>
+                            </h:selectOneMenu>
+                            <label class="mdl-textfield__label" style="width:200px;  margin-left: 100px" for="tipo">Selecione tipo</label>
+                </div>
+                <button class="mdl-button--icon material-icons" style="margin-left: 30px" jsf:action="#{sessaoControle.log()}" >check_circle</button>
+            </div>
+            
+        </h:form>
     </h:body>
        </ui:define>
       </ui:composition>

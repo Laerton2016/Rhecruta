@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package br.edu.ifpb.shared.persistencia;
+import br.edu.ifpb.shared.entidades.Candidato;
 import br.edu.ifpb.shared.entidades.Funcionario;
+import br.edu.ifpb.shared.entidades.Pessoa;
 import java.util.List;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -32,7 +36,7 @@ public class DAOFuncionario {
     }
     
     public List<Funcionario> findAll() {
-        return em.createQuery("Select * from Pessoa order by Nome;", Funcionario.class).getResultList();
+        return em.createQuery("Select p from Pessoa p order by Nome;", Funcionario.class).getResultList();
     }
     
     
@@ -45,6 +49,18 @@ public class DAOFuncionario {
     
     public void update(Funcionario obj) {
             obj = em.merge(obj);
+    }
+
+    public Funcionario findByEmail(String email) {
+        try {
+            TypedQuery<Funcionario> tq = em.createQuery("Select f from Pessoa f where f.email =:email ", Funcionario.class);
+            //Query q = em.createQuery("Select f from Pessoa f where f.email =:email ", Funcionario.class);
+            tq.setParameter("email", email);
+            return tq.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+        
     }
     
 }

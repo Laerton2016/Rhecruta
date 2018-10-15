@@ -15,6 +15,7 @@ C:\IFPB2018\DAC\Avaliação DAC\Rhecruta\Core\src\main\java\br\edu\ifpb\shared\ent
 C:\IFPB2018\DAC\Avaliação DAC\Rhecruta\Core\src\main\java\br\edu\ifpb\core\controle\CandidatoControle.java
 C:\IFPB2018\DAC\Avaliação DAC\Rhecruta\Core\src\main\java\br\edu\ifpb\core\services\CandidatoService.java
 C:\IFPB2018\DAC\Avaliação DAC\Rhecruta\Core\src\main\java\br\edu\ifpb\core\controle\AvaliacaoControle.java
+C:\IFPB2018\DAC\Avaliação DAC\Rhecruta\Core\src\main\java\br\edu\ifpb\core\controle\SessaoControle.java
 C:\IFPB2018\DAC\Avaliação DAC\Rhecruta\Core\src\main\java\br\edu\ifpb\shared\persistencia\DAOAvaliacao.java
 C:\IFPB2018\DAC\Avaliação DAC\Rhecruta\Core\src\main\java\br\edu\ifpb\shared\persistencia\DAOVaga.java
 C:\IFPB2018\DAC\Avaliação DAC\Rhecruta\Core\src\main\java\br\edu\ifpb\core\services\VagaService.java

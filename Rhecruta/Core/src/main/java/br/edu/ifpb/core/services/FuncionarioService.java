@@ -6,6 +6,7 @@
 package br.edu.ifpb.core.services;
 
 import br.edu.ifpb.shared.entidades.Funcionario;
+import br.edu.ifpb.shared.entidades.Pessoa;
 import br.edu.ifpb.shared.persistencia.DAOFuncionario;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -38,5 +39,9 @@ public class FuncionarioService {
     
     public Funcionario findById(int id){
         return dAOFuncionario.findById(id);
+    }
+
+    public Funcionario findByEmail(String email) {
+        return dAOFuncionario.findByEmail(email);
     }
 }

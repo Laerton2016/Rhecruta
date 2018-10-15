@@ -6,6 +6,7 @@
 package br.edu.ifpb.core.services;
 
 import br.edu.ifpb.shared.entidades.Candidato;
+import br.edu.ifpb.shared.entidades.Pessoa;
 import br.edu.ifpb.shared.persistencia.DAOCandidato;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -39,6 +40,10 @@ public class CandidatoService {
     
     public Candidato findById(int id){
         return dAOCandidato.findById(id);
+    }
+
+    public Candidato findByEmail(String email) {
+        return dAOCandidato.findByEmail(email);
     }
             
 }

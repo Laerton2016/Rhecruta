@@ -18,6 +18,7 @@ br\edu\ifpb\shared\entidades\Vaga.class
 br\edu\ifpb\shared\entidades\Endereco.class
 br\edu\ifpb\shared\entidades\Avaliacao.class
 br\edu\ifpb\core\services\AvaliacaoService.class
+br\edu\ifpb\core\controle\SessaoControle.class
 br\edu\ifpb\core\services\CandidatoService.class
 br\edu\ifpb\shared\persistencia\DAOVaga.class
 br\edu\ifpb\core\controle\AvaliacaoControle.class
