@@ -42,6 +42,10 @@ public class FuncionarioService {
     }
 
     public Funcionario findByEmail(String email) {
-        return dAOFuncionario.findByEmail(email);
+        try {
+            return dAOFuncionario.findByEmail(email);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

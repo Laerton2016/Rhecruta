@@ -54,7 +54,6 @@ public class DAOFuncionario {
     public Funcionario findByEmail(String email) {
         try {
             TypedQuery<Funcionario> tq = em.createQuery("Select f from Pessoa f where f.email =:email ", Funcionario.class);
-            //Query q = em.createQuery("Select f from Pessoa f where f.email =:email ", Funcionario.class);
             tq.setParameter("email", email);
             return tq.getSingleResult();
         } catch (Exception e) {

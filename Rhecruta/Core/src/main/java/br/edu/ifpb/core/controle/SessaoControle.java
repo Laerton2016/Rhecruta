@@ -47,17 +47,19 @@ public class SessaoControle implements Serializable{
         return (Funcionario) pessoa;
     }
     
-    public String acessaFuncionario(FuncionarioControler fun){
+    public String acessaFuncionario(FuncionarioControler fun, CandidatoControle can){
         if (tipo.equals("0")){
             fun.setFuncionario((Funcionario)pessoa);
+            can.setCandidato(new Candidato());
             return "../../Core/faces/funcionario.xhtml";
         }
         return null;
     }
-    public String acessaCandidato(CandidatoControle can)
+    public String acessaCandidato(CandidatoControle can, FuncionarioControler fun)
     {
         if (tipo.equals("1")){
             can.setCandidato((Candidato)pessoa);
+            fun.setFuncionario(new Funcionario());
             return "../../Core/faces/canidato.xhtml";
         }
         return "../../Core/faces/canidato.xhtml";
@@ -81,11 +83,16 @@ public class SessaoControle implements Serializable{
     public String log(){
         Pessoa p = null ;
         if (!email.equals("")){
-            if (tipo.equals("0")){
+            try {
+                if (tipo.equals("0")){
                 p = serviceFuncionario.findByEmail(email);
                 
             }else{
                 p = serviceCandidato.findByEmail(email);
+            }
+            } catch (Exception e) {
+                pessoa = new Pessoa();
+                return null;
             }
         }
         if (p != null){
